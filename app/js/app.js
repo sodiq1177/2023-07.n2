@@ -8,6 +8,10 @@ function mark(id,s){const p=getProgress();p[id]=s;saveProgress(p);}
 function status(id){return getProgress()[id]||'new';}
 
 function getData(){
+  if(state.section==='dokvocab'){
+    if(state.exam==='july') return dokkaiVocab.filter(v=>v.source.startsWith('j-'));
+    return dokkaiVocab.filter(v=>v.source.startsWith('d-'));
+  }
   if(state.exam==='july'){
     if(state.section==='moji') return july2023MojiGoi;
     if(state.section==='bunpo') return july2023Bunpo;
@@ -43,8 +47,8 @@ function renderCard(){
 
   const item=data[state.cardIdx];
 
-  if(state.section==='moji'){
-    front.innerHTML=`<div class="main-text">${item.kanji}</div><div class="sub-text">${item.category}</div><div class="hint">Bosing → to'liq ma'lumot</div>`;
+  if(state.section==='moji'||state.section==='dokvocab'){
+    front.innerHTML=`<div class="main-text">${item.kanji}</div><div class="sub-text">${state.section==='dokvocab'?item.level+' | '+item.category:item.category}</div><div class="hint">Bosing → to'liq ma'lumot</div>`;
     back.innerHTML=mojiBack(item);
   } else if(state.section==='bunpo'){
     front.innerHTML=`<div class="main-text" style="font-size:2rem">${item.grammar}</div><div class="sub-text">${item.category}</div><div class="hint">Bosing → tushuntirish</div>`;
@@ -56,15 +60,17 @@ function renderCard(){
 }
 
 function mojiBack(i){
-  return `
+  let html = `
     <div class="info-row"><div class="info-label">O'qilishi</div><div class="info-val big">${i.reading}</div></div>
     <div class="info-row"><div class="info-label">Ma'nosi</div><div class="info-val">${i.meaning}</div></div>
     <div class="info-row"><div class="info-label">日本語の意味</div><div class="info-val">${i.meaningJP}</div></div>
-    <div class="info-row"><div class="info-label">Ishlatilishi</div><div class="info-val">${i.usage}<br><small style="color:#aaa">${i.usageTranslation}</small></div></div>
-    <div class="info-row"><div class="info-label">Misol</div><div class="info-val">${i.example}</div></div>
-    <div class="info-row"><div class="info-label">O'xshash so'zlar</div><div class="info-val">${i.similar.join('<br>')}</div></div>
-    <div class="info-row"><div class="info-label">JLPT Farqi</div><div class="info-val"><span class="tip">${i.jlptTip}</span></div></div>
   `;
+  if(i.usage){html+=`<div class="info-row"><div class="info-label">Ishlatilishi</div><div class="info-val">${i.usage}<br><small style="color:#aaa">${i.usageTranslation||''}</small></div></div>`;}
+  if(i.example){html+=`<div class="info-row"><div class="info-label">Misol</div><div class="info-val">${i.example}</div></div>`;}
+  if(i.similar){html+=`<div class="info-row"><div class="info-label">O'xshash so'zlar</div><div class="info-val">${i.similar.join('<br>')}</div></div>`;}
+  if(i.jlptTip){html+=`<div class="info-row"><div class="info-label">JLPT Farqi</div><div class="info-val"><span class="tip">${i.jlptTip}</span></div></div>`;}
+  if(i.level){html+=`<div class="info-row"><div class="info-label">Daraja</div><div class="info-val" style="color:${i.level==='N1'?'#ff6b9d':'#ffd93d'};font-weight:700">${i.level}</div></div>`;}
+  return html;
 }
 
 function bunpoBack(i){
@@ -136,11 +142,11 @@ function genTest(){
   const item=data[ri];
   let question='',correctAns='',field='';
 
-  if(state.section==='moji'){
+  if(state.section==='moji'||state.section==='dokvocab'){
     if(state.testType==='meaning'){question=item.kanji;correctAns=item.meaning;field='meaning';}
     else if(state.testType==='reading'){question=item.kanji;correctAns=item.reading;field='reading';}
     else if(state.testType==='kanji'){question=item.reading;correctAns=item.kanji;field='kanji';}
-    else{question=item.kanji;correctAns=item.usage;field='usage';}
+    else{question=item.kanji;correctAns=item.meaningJP||item.usage||item.meaning;field='meaningJP';}
   } else {
     if(state.testType==='meaning'){question=item.grammar;correctAns=item.meaning;field='meaning';}
     else if(state.testType==='reading'){question=item.meaning;correctAns=item.grammar;field='grammar';}
@@ -220,7 +226,7 @@ function answerDokkai(el,clicked,q){
 // ===== STATS =====
 function renderStats(){
   const p=getProgress();
-  const all=[...july2023MojiGoi,...july2023Bunpo,...july2023Dokkai,...dec2023MojiGoi,...dec2023Bunpo,...dec2023Dokkai];
+  const all=[...july2023MojiGoi,...july2023Bunpo,...july2023Dokkai,...dec2023MojiGoi,...dec2023Bunpo,...dec2023Dokkai,...dokkaiVocab];
   let known=0,unknown=0;
   all.forEach(i=>{if(p[i.id]==='known')known++;else if(p[i.id]==='unknown')unknown++;});
 
@@ -231,8 +237,8 @@ function renderStats(){
   `;
 
   const secs=[
-    {name:'7月 文字語彙',d:july2023MojiGoi},{name:'7月 文法',d:july2023Bunpo},{name:'7月 読解',d:july2023Dokkai},
-    {name:'12月 文字語彙',d:dec2023MojiGoi},{name:'12月 文法',d:dec2023Bunpo},{name:'12月 読解',d:dec2023Dokkai}
+    {name:'7月 文字語彙',d:july2023MojiGoi},{name:'7月 文法',d:july2023Bunpo},{name:'7月 読解',d:july2023Dokkai},{name:'7月 読解語彙',d:dokkaiVocab.filter(v=>v.source.startsWith('j-'))},
+    {name:'12月 文字語彙',d:dec2023MojiGoi},{name:'12月 文法',d:dec2023Bunpo},{name:'12月 読解',d:dec2023Dokkai},{name:'12月 読解語彙',d:dokkaiVocab.filter(v=>v.source.startsWith('d-'))}
   ];
   let html='';
   secs.forEach(s=>{
