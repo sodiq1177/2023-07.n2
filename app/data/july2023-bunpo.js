@@ -1,0 +1,222 @@
+// JLPT N2 2023 July - Bunpo (文法)
+const july2023Bunpo = [
+  {
+    id: "j-bp-1",
+    grammar: "～にしたがって",
+    meaning: "...ga qarab, ...ga muvofiq",
+    meaningJP: "～と一緒に変化する",
+    structure: "動詞辞書形 / 名詞 + にしたがって",
+    example: "年齢が上がるにしたがって、体力が落ちる。",
+    exampleTranslation: "Yosh oshgan sari, jismoniy kuch kamayadi.",
+    similar: ["～につれて", "～とともに"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+  {
+    id: "j-bp-2",
+    grammar: "～に関して",
+    meaning: "...haqida, ...borasida",
+    meaningJP: "～について（硬い表現）",
+    structure: "名詞 + に関して / に関する + 名詞",
+    example: "この問題に関して、意見を述べたい。",
+    exampleTranslation: "Bu muammo haqida fikr bildirmoqchiman.",
+    similar: ["～について", "～に対して"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+  {
+    id: "j-bp-3",
+    grammar: "～をきっかけに",
+    meaning: "...sababli, ...tufayli boshlangan",
+    meaningJP: "～がきっかけとなって",
+    structure: "名詞 / 動詞た形 + のをきっかけに",
+    example: "留学をきっかけに、日本語の勉強を始めた。",
+    exampleTranslation: "Chet elda o'qish sababli yapon tilini o'rganishni boshladim.",
+    similar: ["～を契機に", "～がもとで"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+
+  {
+    id: "j-bp-4",
+    grammar: "～ものなら",
+    meaning: "agar iloji bo'lsa... (ammo qiyin)",
+    meaningJP: "もし～できるなら（実現が難しい）",
+    structure: "動詞可能形 + ものなら",
+    example: "やり直せるものなら、やり直したい。",
+    exampleTranslation: "Qaytadan qila olsam, qaytadan qilardim.",
+    similar: ["～ことなら", "～ものを"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+  {
+    id: "j-bp-5",
+    grammar: "～わけがない",
+    meaning: "...bo'lishi mumkin emas",
+    meaningJP: "～はずがない、絶対にない",
+    structure: "動詞普通形 / い形 / な形な / 名詞の + わけがない",
+    example: "そんな簡単な問題が解けないわけがない。",
+    exampleTranslation: "Bunday oson masalani yecha olmaslik mumkin emas.",
+    similar: ["～はずがない", "～ことはない"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+  {
+    id: "j-bp-6",
+    grammar: "～てたまらない",
+    meaning: "juda ...chidab bo'lmaydi",
+    meaningJP: "非常に～で我慢できない",
+    structure: "動詞て形 / い形くて / な形で + たまらない",
+    example: "暑くてたまらない。",
+    exampleTranslation: "Juda issiq, chidab bo'lmaydi.",
+    similar: ["～てしょうがない", "～てならない"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+  {
+    id: "j-bp-7",
+    grammar: "～どころか",
+    meaning: "...qayoqda, aksincha...",
+    meaningJP: "～ではなく、それ以上に/逆に",
+    structure: "動詞普通形 / い形 / な形 / 名詞 + どころか",
+    example: "手伝うどころか、邪魔ばかりしている。",
+    exampleTranslation: "Yordam berish qayoqda, faqat halaqit beryapti.",
+    similar: ["～ばかりか", "～のみならず"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+  {
+    id: "j-bp-8",
+    grammar: "～に限って",
+    meaning: "aynan ... paytda, faqat ...",
+    meaningJP: "～のときに限り、特に",
+    structure: "名詞 + に限って",
+    example: "急いでいるときに限って、電車が遅れる。",
+    exampleTranslation: "Aynan shoshilayotgan paytda poyezd kechikadi.",
+    similar: ["～に限り", "～ときだけ"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+
+  {
+    id: "j-bp-9",
+    grammar: "～ようがない",
+    meaning: "iloji yo'q, qilib bo'lmaydi",
+    meaningJP: "～する方法がない",
+    structure: "動詞ます形 + ようがない",
+    example: "連絡先がわからないので、連絡しようがない。",
+    exampleTranslation: "Aloqa ma'lumoti noma'lum, shuning uchun bog'lanib bo'lmaydi.",
+    similar: ["～ようもない", "～わけにはいかない"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+  {
+    id: "j-bp-10",
+    grammar: "～に違いない",
+    meaning: "aniq ..., shubhasiz ...",
+    meaningJP: "きっと～だ、間違いなく～だ",
+    structure: "動詞普通形 / い形 / な形 / 名詞 + に違いない",
+    example: "彼が犯人に違いない。",
+    exampleTranslation: "U aniq jinoyatchi.",
+    similar: ["～はずだ", "～に決まっている"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+  {
+    id: "j-bp-11",
+    grammar: "～つつある",
+    meaning: "...moqda (jarayon davom etyapti)",
+    meaningJP: "だんだん～している最中",
+    structure: "動詞ます形 + つつある",
+    example: "環境問題は改善しつつある。",
+    exampleTranslation: "Atrof-muhit muammolari yaxshilanmoqda.",
+    similar: ["～ている", "～最中（さいちゅう）"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+  {
+    id: "j-bp-12",
+    grammar: "～にもかかわらず",
+    meaning: "...ga qaramasdan",
+    meaningJP: "～のに、～けれども",
+    structure: "動詞普通形 / い形 / な形である / 名詞である + にもかかわらず",
+    example: "雨にもかかわらず、試合は行われた。",
+    exampleTranslation: "Yomg'irga qaramasdan, o'yin bo'lib o'tdi.",
+    similar: ["～のに", "～にかかわらず"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "j-bp-13",
+    grammar: "～一方で",
+    meaning: "bir tomondan ..., boshqa tomondan ...",
+    meaningJP: "～する反面、もう一方では",
+    structure: "動詞普通形 / い形 / な形である + 一方で",
+    example: "都市は便利な一方で、自然が少ない。",
+    exampleTranslation: "Shahar qulay, boshqa tomondan tabiat kam.",
+    similar: ["～反面", "～半面"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+
+  {
+    id: "j-bp-14",
+    grammar: "～ことから",
+    meaning: "...dan kelib chiqib, ...sababli",
+    meaningJP: "～という理由・事実から",
+    structure: "動詞普通形 / い形 / な形な / 名詞の + ことから",
+    example: "形が星に似ていることから、「星草」と名付けられた。",
+    exampleTranslation: "Shakli yulduzga o'xshagani sababli 'yulduz o't' deb nomlangan.",
+    similar: ["～ために", "～ので"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "j-bp-15",
+    grammar: "～としたら",
+    meaning: "agar ... deb faraz qilsak",
+    meaningJP: "もし～なら（仮定）",
+    structure: "動詞普通形 / い形 / な形 / 名詞 + だとしたら",
+    example: "もし宝くじが当たったとしたら、何をしますか。",
+    exampleTranslation: "Agar lotereya yutib olsangiz, nima qilasiz?",
+    similar: ["～とすれば", "～としても"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "j-bp-16",
+    grammar: "～ものの",
+    meaning: "...bo'lsa ham, lekin...",
+    meaningJP: "～けれども、しかし",
+    structure: "動詞た形 / い形 / な形な + ものの",
+    example: "買ったものの、一度も使っていない。",
+    exampleTranslation: "Sotib olganman-u, bir marta ham ishlatmaganman.",
+    similar: ["～が", "～けれども"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "j-bp-17",
+    grammar: "～かねない",
+    meaning: "...bo'lishi mumkin (salbiy natija)",
+    meaningJP: "～する可能性がある（悪い結果）",
+    structure: "動詞ます形 + かねない",
+    example: "無理をすると、病気になりかねない。",
+    exampleTranslation: "Haddan oshsa, kasal bo'lib qolishi mumkin.",
+    similar: ["～おそれがある", "～かもしれない"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "j-bp-18",
+    grammar: "～上で",
+    meaning: "...uchun, ...da (maqsad/shart)",
+    meaningJP: "～するために、～する際に",
+    structure: "動詞辞書形 / 名詞の + 上で",
+    example: "契約する上で、注意すべき点がある。",
+    exampleTranslation: "Shartnoma tuzishda e'tibor berish kerak bo'lgan nuqtalar bor.",
+    similar: ["～にあたって", "～際に"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  }
+];

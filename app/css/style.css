@@ -1,0 +1,618 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== Header ===== */
+.header {
+  background: #16213e;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #0f3460;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e94560;
+}
+
+.exam-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.exam-tab {
+  padding: 6px 14px;
+  border: 1px solid #0f3460;
+  background: transparent;
+  color: #aaa;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.exam-tab.active {
+  background: #e94560;
+  color: white;
+  border-color: #e94560;
+}
+
+/* ===== Section Nav ===== */
+.section-nav {
+  display: flex;
+  background: #16213e;
+  padding: 8px 16px;
+  gap: 8px;
+  border-bottom: 1px solid #0f3460;
+}
+
+.section-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #0f3460;
+  color: #aaa;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.section-btn.active {
+  background: #533483;
+  color: white;
+  box-shadow: 0 2px 8px rgba(83, 52, 131, 0.4);
+}
+
+
+/* ===== Mode Nav ===== */
+.mode-nav {
+  display: flex;
+  padding: 10px 16px;
+  gap: 8px;
+  background: #1a1a2e;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #333;
+  background: transparent;
+  color: #888;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.mode-btn.active {
+  background: #0f3460;
+  color: #fff;
+  border-color: #0f3460;
+}
+
+/* ===== Views ===== */
+.view {
+  display: none;
+  padding: 16px;
+}
+
+.view.active {
+  display: block;
+}
+
+/* ===== Flashcard ===== */
+.flashcard-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.filter-btn {
+  padding: 5px 12px;
+  border: 1px solid #333;
+  background: transparent;
+  color: #888;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.3s;
+}
+
+.filter-btn.active {
+  background: #533483;
+  color: white;
+  border-color: #533483;
+}
+
+.card-counter {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.flashcard-container {
+  perspective: 1000px;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.flashcard {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  border-radius: 16px;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  min-height: 300px;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.flashcard-front {
+  background: linear-gradient(135deg, #0f3460, #533483);
+  border: 2px solid #533483;
+}
+
+.flashcard-back {
+  background: linear-gradient(135deg, #16213e, #1a1a2e);
+  border: 2px solid #0f3460;
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.kanji-display {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+}
+
+.tap-hint {
+  margin-top: 20px;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.back-content {
+  width: 100%;
+}
+
+.back-content .info-row {
+  margin-bottom: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #333;
+}
+
+.back-content .info-label {
+  font-size: 0.75rem;
+  color: #e94560;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.back-content .info-value {
+  font-size: 0.95rem;
+  color: #eee;
+  line-height: 1.4;
+}
+
+.back-content .info-value.big {
+  font-size: 1.6rem;
+}
+
+
+/* ===== Flashcard Actions ===== */
+.flashcard-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.action-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.unknown-btn {
+  background: #e94560;
+  color: white;
+}
+
+.unknown-btn:hover {
+  background: #d63851;
+  transform: scale(1.05);
+}
+
+.known-btn {
+  background: #2ecc71;
+  color: white;
+}
+
+.known-btn:hover {
+  background: #27ae60;
+  transform: scale(1.05);
+}
+
+.skip-btn {
+  background: #333;
+  color: #aaa;
+  padding: 12px 16px;
+}
+
+.skip-btn:hover {
+  background: #444;
+}
+
+/* ===== Test View ===== */
+.test-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.test-type-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.test-type-btn {
+  padding: 6px 12px;
+  border: 1px solid #333;
+  background: transparent;
+  color: #888;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.3s;
+}
+
+.test-type-btn.active {
+  background: #0f3460;
+  color: white;
+  border-color: #0f3460;
+}
+
+.test-score {
+  color: #2ecc71;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.test-container {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.test-question {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #fff;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.test-option {
+  padding: 14px 18px;
+  background: #0f3460;
+  border: 2px solid #333;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #eee;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.test-option:hover {
+  border-color: #533483;
+  background: #1a2a4a;
+}
+
+.test-option.correct {
+  border-color: #2ecc71;
+  background: rgba(46, 204, 113, 0.15);
+}
+
+.test-option.wrong {
+  border-color: #e94560;
+  background: rgba(233, 69, 96, 0.15);
+}
+
+.test-feedback {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  display: none;
+}
+
+.test-feedback.show {
+  display: block;
+}
+
+.test-feedback.correct {
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid #2ecc71;
+  color: #2ecc71;
+}
+
+.test-feedback.wrong {
+  background: rgba(233, 69, 96, 0.1);
+  border: 1px solid #e94560;
+  color: #e94560;
+}
+
+.test-next-btn {
+  display: none;
+  margin: 16px auto 0;
+  padding: 10px 24px;
+  background: #533483;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.test-next-btn.show {
+  display: block;
+}
+
+
+/* ===== Stats View ===== */
+.stats-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.stats-title {
+  color: #e94560;
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+}
+
+.stats-subtitle {
+  color: #533483;
+  margin: 20px 0 12px;
+  font-size: 1rem;
+}
+
+.stats-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+.stat-card.known .stat-number { color: #2ecc71; }
+.stat-card.unknown .stat-number { color: #e94560; }
+.stat-card.total .stat-number { color: #f39c12; }
+
+.stats-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stats-section-item {
+  background: #16213e;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.stats-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.stats-section-name {
+  font-size: 0.9rem;
+  color: #eee;
+}
+
+.stats-section-percent {
+  font-size: 0.85rem;
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.stats-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+}
+
+.reset-btn {
+  padding: 10px 16px;
+  border: 1px solid #e94560;
+  background: transparent;
+  color: #e94560;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+
+.reset-btn:hover {
+  background: rgba(233, 69, 96, 0.1);
+}
+
+.reset-btn.reset-all {
+  border-color: #f39c12;
+  color: #f39c12;
+}
+
+.reset-btn.reset-all:hover {
+  background: rgba(243, 156, 18, 0.1);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .kanji-display {
+    font-size: 2.8rem;
+  }
+  
+  .flashcard-actions {
+    flex-wrap: wrap;
+  }
+  
+  .stats-overview {
+    grid-template-columns: 1fr;
+  }
+  
+  .test-type-buttons {
+    width: 100%;
+  }
+}
+
+/* ===== Animations ===== */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.view.active {
+  animation: slideIn 0.3s ease;
+}
+
+/* ===== Dokkai specific ===== */
+.dokkai-passage {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  line-height: 1.8;
+  font-size: 0.9rem;
+  color: #ddd;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dokkai-title {
+  color: #e94560;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.dokkai-vocab {
+  margin-top: 12px;
+  padding: 10px;
+  background: #0f3460;
+  border-radius: 8px;
+}
+
+.dokkai-vocab-title {
+  color: #f39c12;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+}
+
+.dokkai-vocab-item {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 3px 0;
+}
