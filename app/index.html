@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JLPT N2 2023 - Study App</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="header">
+    <div class="header-title">JLPT N2 2023</div>
+    <div class="exam-tabs">
+      <button class="exam-tab active" data-exam="july">July 2023</button>
+      <button class="exam-tab" data-exam="december">December 2023</button>
+    </div>
+  </header>
+
+  <!-- Section Navigation -->
+  <nav class="section-nav">
+    <button class="section-btn active" data-section="moji-goi">文字・語彙</button>
+    <button class="section-btn" data-section="bunpo">文法</button>
+    <button class="section-btn" data-section="dokkai">読解</button>
+  </nav>
+
+  <!-- Mode Navigation -->
+  <div class="mode-nav">
+    <button class="mode-btn active" data-mode="flashcard">Flashcard</button>
+    <button class="mode-btn" data-mode="test">Test</button>
+    <button class="mode-btn" data-mode="stats">Statistika</button>
+  </div>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <!-- Flashcard View -->
+    <div id="flashcard-view" class="view active">
+      <div class="flashcard-controls">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Hammasi</button>
+          <button class="filter-btn" data-filter="unknown">Bilmadim</button>
+          <button class="filter-btn" data-filter="known">Bildim</button>
+        </div>
+        <div class="card-counter">
+          <span id="current-card">1</span> / <span id="total-cards">0</span>
+        </div>
+      </div>
+
+      <div class="flashcard-container">
+        <div class="flashcard" id="flashcard">
+          <div class="flashcard-front">
+            <div class="kanji-display" id="kanji-display"></div>
+            <div class="tap-hint">Kartani bosing</div>
+          </div>
+          <div class="flashcard-back">
+            <div class="back-content" id="back-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard-actions">
+        <button class="action-btn unknown-btn" id="btn-unknown">Bilmadim</button>
+        <button class="action-btn skip-btn" id="btn-prev">&#8592;</button>
+        <button class="action-btn skip-btn" id="btn-next">&#8594;</button>
+        <button class="action-btn known-btn" id="btn-known">Bildim</button>
+      </div>
+    </div>
+
+    <!-- Test View -->
+    <div id="test-view" class="view">
+      <div class="test-controls">
+        <div class="test-type-buttons">
+          <button class="test-type-btn active" data-test="meaning">Ma'no</button>
+          <button class="test-type-btn" data-test="reading">O'qilishi</button>
+          <button class="test-type-btn" data-test="kanji">Kanji</button>
+          <button class="test-type-btn" data-test="usage">Ishlatilishi</button>
+        </div>
+        <div class="test-score">
+          To'g'ri: <span id="test-correct">0</span> / <span id="test-total">0</span>
+        </div>
+      </div>
+
+      <div class="test-container" id="test-container">
+        <div class="test-question" id="test-question"></div>
+        <div class="test-options" id="test-options"></div>
+        <div class="test-feedback" id="test-feedback"></div>
+        <button class="test-next-btn" id="test-next-btn">Keyingi savol</button>
+      </div>
+    </div>
+
+    <!-- Stats View -->
+    <div id="stats-view" class="view">
+      <div class="stats-container">
+        <h2 class="stats-title">Umumiy Statistika</h2>
+        <div class="stats-overview" id="stats-overview"></div>
+        <h3 class="stats-subtitle">Bo'limlar bo'yicha</h3>
+        <div class="stats-sections" id="stats-sections"></div>
+        <div class="stats-actions">
+          <button class="reset-btn" id="reset-section-btn">Bu bo'limni tozalash</button>
+          <button class="reset-btn reset-all" id="reset-all-btn">Hammasini tozalash</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="data/july2023-moji-goi.js"></script>
+  <script src="data/july2023-bunpo.js"></script>
+  <script src="data/july2023-dokkai.js"></script>
+  <script src="data/dec2023-moji-goi.js"></script>
+  <script src="data/dec2023-bunpo.js"></script>
+  <script src="data/dec2023-dokkai.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

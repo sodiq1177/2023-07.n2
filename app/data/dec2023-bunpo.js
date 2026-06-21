@@ -1,0 +1,197 @@
+// JLPT N2 2023 December - Bunpo (文法)
+const dec2023Bunpo = [
+  {
+    id: "d-bp-1",
+    grammar: "～てからでないと",
+    meaning: "...qilmasdan turib ... bo'lmaydi",
+    meaningJP: "～してからでなければ～できない",
+    structure: "動詞て形 + からでないと",
+    example: "説明書を読んでからでないと、使えない。",
+    exampleTranslation: "Yo'riqnomani o'qimasdan turib, ishlatib bo'lmaydi.",
+    similar: ["～ないことには", "～てからでなければ"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+  {
+    id: "d-bp-2",
+    grammar: "～を問わず",
+    meaning: "...ga qaramasdan, farqi yo'q",
+    meaningJP: "～に関係なく",
+    structure: "名詞 + を問わず",
+    example: "年齢を問わず、誰でも参加できる。",
+    exampleTranslation: "Yoshiga qaramasdan, hamma qatnasha oladi.",
+    similar: ["～にかかわらず", "～によらず"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+  {
+    id: "d-bp-3",
+    grammar: "～に先立って",
+    meaning: "...dan oldin, avvalgi",
+    meaningJP: "～の前に（準備として）",
+    structure: "名詞 / 動詞辞書形 + に先立って",
+    example: "会議に先立って、資料を配布した。",
+    exampleTranslation: "Yig'ilishdan oldin, materiallarni tarqatdik.",
+    similar: ["～の前に", "～に先だって"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+
+  {
+    id: "d-bp-4",
+    grammar: "～をめぐって",
+    meaning: "...atrofida, ...bo'yicha (munozara)",
+    meaningJP: "～について（議論や対立がある）",
+    structure: "名詞 + をめぐって",
+    example: "土地の所有権をめぐって争いが起きた。",
+    exampleTranslation: "Yer egaligi bo'yicha nizo kelib chiqdi.",
+    similar: ["～について", "～に関して"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+  {
+    id: "d-bp-5",
+    grammar: "～ざるを得ない",
+    meaning: "...masdan iloji yo'q, majbur",
+    meaningJP: "～しないわけにはいかない",
+    structure: "動詞ない形（ない→ざる）+ を得ない",
+    example: "事情があり、参加せざるを得ない。",
+    exampleTranslation: "Sabab bor, qatnashmasdan ilojim yo'q.",
+    similar: ["～ないわけにはいかない", "～しかない"],
+    level: "N2",
+    category: "mondai7-bunpo-keitai"
+  },
+  {
+    id: "d-bp-6",
+    grammar: "～っぱなし",
+    meaning: "...qilib qo'yib ketish, shunday qoldirish",
+    meaningJP: "～したまま放っておくこと",
+    structure: "動詞ます形 + っぱなし",
+    example: "テレビをつけっぱなしで寝てしまった。",
+    exampleTranslation: "Televizorni yoqib qo'yib uxlab qoldi.",
+    similar: ["～まま", "～たまま"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+  {
+    id: "d-bp-7",
+    grammar: "～次第",
+    meaning: "...ga bog'liq, ...shi bilanoq",
+    meaningJP: "～に依存する / ～したらすぐに",
+    structure: "名詞 + 次第 / 動詞ます形 + 次第",
+    example: "結果は努力次第だ。/ 届き次第連絡します。",
+    exampleTranslation: "Natija harakat qilishga bog'liq. / Yetishi bilanoq xabar beraman.",
+    similar: ["～による", "～たらすぐ"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+  {
+    id: "d-bp-8",
+    grammar: "～に限らず",
+    meaning: "nafaqat ..., balki ...",
+    meaningJP: "～だけでなく、他にも",
+    structure: "名詞 + に限らず",
+    example: "この問題は日本に限らず、世界中で起きている。",
+    exampleTranslation: "Bu muammo nafaqat Yaponiyada, balki butun dunyoda sodir bo'lmoqda.",
+    similar: ["～だけでなく", "～ばかりでなく"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+
+  {
+    id: "d-bp-9",
+    grammar: "～からには",
+    meaning: "madomiki ..., ekan ...",
+    meaningJP: "～する以上は（責任・覚悟）",
+    structure: "動詞普通形 + からには",
+    example: "約束したからには、必ず守る。",
+    exampleTranslation: "Madomiki va'da bergan ekanman, albatta bajaraman.",
+    similar: ["～以上は", "～上は"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+  {
+    id: "d-bp-10",
+    grammar: "～とは限らない",
+    meaning: "...degani emas, har doim ham emas",
+    meaningJP: "必ずしも～ではない",
+    structure: "動詞普通形 / い形 / な形 / 名詞 + とは限らない",
+    example: "高いものがいいとは限らない。",
+    exampleTranslation: "Qimmat narsa yaxshi degani emas.",
+    similar: ["～わけではない", "必ずしも～ない"],
+    level: "N2",
+    category: "mondai8-bunpo-bun"
+  },
+  {
+    id: "d-bp-11",
+    grammar: "～にわたって",
+    meaning: "...davomida, ...bo'ylab",
+    meaningJP: "～の範囲全体に",
+    structure: "名詞 + にわたって",
+    example: "三日間にわたって会議が行われた。",
+    exampleTranslation: "Uch kun davomida yig'ilish o'tkazildi.",
+    similar: ["～を通じて", "～の間"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "d-bp-12",
+    grammar: "～たところ",
+    meaning: "...qilganimda, natijada",
+    meaningJP: "～したら（結果がわかった）",
+    structure: "動詞た形 + ところ",
+    example: "調べたところ、原因がわかった。",
+    exampleTranslation: "Tekshirganimda, sababi ma'lum bo'ldi.",
+    similar: ["～たら", "～した結果"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "d-bp-13",
+    grammar: "～にしろ～にしろ",
+    meaning: "...bo'lsin ...bo'lsin, qanday bo'lmasin",
+    meaningJP: "～でも～でも（どちらの場合も）",
+    structure: "名詞/動詞 + にしろ + 名詞/動詞 + にしろ",
+    example: "賛成にしろ反対にしろ、意見を言ってほしい。",
+    exampleTranslation: "Rozi bo'lsin, qarshi bo'lsin, fikr bildirsangiz.",
+    similar: ["～にせよ～にせよ", "～であれ～であれ"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "d-bp-14",
+    grammar: "～向け",
+    meaning: "...uchun mo'ljallangan",
+    meaningJP: "～を対象として作られた",
+    structure: "名詞 + 向け（の/に）",
+    example: "この本は初心者向けに書かれている。",
+    exampleTranslation: "Bu kitob boshlang'ichlar uchun yozilgan.",
+    similar: ["～用（よう）", "～対象（たいしょう）"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "d-bp-15",
+    grammar: "～おそれがある",
+    meaning: "...xavfi bor, ...bo'lishi mumkin (salbiy)",
+    meaningJP: "～する危険性がある（悪い可能性）",
+    structure: "動詞辞書形 / 名詞の + おそれがある",
+    example: "台風が上陸するおそれがある。",
+    exampleTranslation: "Tayfunning quruqlikka chiqish xavfi bor.",
+    similar: ["～かねない", "～可能性がある"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  },
+  {
+    id: "d-bp-16",
+    grammar: "～にあたって",
+    meaning: "...paytida, ...da (muhim holat)",
+    meaningJP: "～する際に（大事な場面で）",
+    structure: "動詞辞書形 / 名詞 + にあたって",
+    example: "卒業にあたって、先生方に感謝したい。",
+    exampleTranslation: "Bitiruv paytida, o'qituvchilarga minnatdorchilik bildirmoqchiman.",
+    similar: ["～に際して", "～にあたり"],
+    level: "N2",
+    category: "mondai9-bunpo-bunsho"
+  }
+];
