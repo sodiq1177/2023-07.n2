@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JLPT N2 2023 - O'rganish</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">N2 <span>2023</span></h1>
+    <div class="exam-tabs">
+      <button class="exam-tab active" data-exam="july">7月 July</button>
+      <button class="exam-tab" data-exam="dec">12月 Dec</button>
+    </div>
+  </header>
+
+  <nav class="section-nav">
+    <button class="section-btn active" data-section="moji">文字語彙</button>
+    <button class="section-btn" data-section="bunpo">文法</button>
+    <button class="section-btn" data-section="dokkai">読解</button>
+  </nav>
+
+  <div class="mode-nav">
+    <button class="mode-btn active" data-mode="flashcard">📖 Flashcard</button>
+    <button class="mode-btn" data-mode="test">✍️ Test</button>
+    <button class="mode-btn" data-mode="stats">📊 Natija</button>
+  </div>
+
+  <main class="main-content">
+    <!-- FLASHCARD VIEW -->
+    <div id="view-flashcard" class="view active">
+      <div class="fc-top">
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Hammasi</button>
+          <button class="filter-btn" data-filter="unknown">❌ Bilmadim</button>
+          <button class="filter-btn" data-filter="known">✅ Bildim</button>
+        </div>
+        <span class="counter" id="counter">0/0</span>
+      </div>
+      <div class="card-wrap">
+        <div class="card" id="card">
+          <div class="card-front" id="card-front"></div>
+          <div class="card-back" id="card-back"></div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-unknown" id="btn-unknown">❌ Bilmadim</button>
+        <button class="btn btn-nav" id="btn-prev">◀</button>
+        <button class="btn btn-nav" id="btn-next">▶</button>
+        <button class="btn btn-known" id="btn-known">✅ Bildim</button>
+      </div>
+    </div>
+
+    <!-- TEST VIEW -->
+    <div id="view-test" class="view">
+      <div class="test-top">
+        <div class="test-types">
+          <button class="tt-btn active" data-tt="meaning">Ma'no</button>
+          <button class="tt-btn" data-tt="reading">O'qilishi</button>
+          <button class="tt-btn" data-tt="kanji">Kanji</button>
+          <button class="tt-btn" data-tt="usage">Misol</button>
+        </div>
+        <div class="test-score" id="test-score">0/0</div>
+      </div>
+      <div class="test-box" id="test-box">
+        <div class="test-q" id="test-q"></div>
+        <div class="test-opts" id="test-opts"></div>
+        <div class="test-fb" id="test-fb"></div>
+        <button class="btn btn-next-q" id="btn-next-q">Keyingi →</button>
+      </div>
+    </div>
+
+    <!-- STATS VIEW -->
+    <div id="view-stats" class="view">
+      <div class="stats-wrap">
+        <div class="stats-cards" id="stats-cards"></div>
+        <div class="stats-sections" id="stats-sections"></div>
+        <div class="stats-btns">
+          <button class="btn btn-reset" id="btn-reset-section">Bu bo'limni tozalash</button>
+          <button class="btn btn-reset-all" id="btn-reset-all">Hammasini tozalash</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="data/july2023-moji-goi.js"></script>
+  <script src="data/july2023-bunpo.js"></script>
+  <script src="data/july2023-dokkai.js"></script>
+  <script src="data/dec2023-moji-goi.js"></script>
+  <script src="data/dec2023-bunpo.js"></script>
+  <script src="data/dec2023-dokkai.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
