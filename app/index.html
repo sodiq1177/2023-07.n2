@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JLPT N2 2023</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0f0f23;color:#eee;min-height:100vh}
+header{background:linear-gradient(90deg,#7c3aed,#ec4899);padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+header h1{font-size:1.3rem;color:#fff}
+.tabs{display:flex;gap:6px}
+.tab{padding:6px 14px;background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:20px;cursor:pointer;font-size:.8rem;font-weight:700}
+.tab.on{background:#fff;color:#7c3aed}
+nav{display:flex;gap:6px;padding:10px;background:#1a1a2e;flex-wrap:wrap}
+nav button{flex:1;min-width:70px;padding:9px 6px;background:#2d2d5e;border:2px solid transparent;color:#aaa;border-radius:10px;cursor:pointer;font-size:.8rem;font-weight:600;transition:.2s}
+nav button.on{background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff;border-color:#a78bfa}
+.modes{display:flex;gap:6px;padding:8px 10px;background:#0f0f23}
+.modes button{flex:1;padding:8px;background:transparent;border:1px solid #333;color:#777;border-radius:8px;cursor:pointer;font-size:.82rem;transition:.2s}
+.modes button.on{background:#fbbf24;color:#000;border-color:#fbbf24;font-weight:700}
+main{padding:14px;max-width:520px;margin:0 auto}
+.view{display:none}.view.on{display:block;animation:fi .3s}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Card */
+.fc-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.filters{display:flex;gap:4px}
+.filters button{padding:4px 10px;background:transparent;border:1px solid #444;color:#888;border-radius:12px;cursor:pointer;font-size:.72rem}
+.filters button.on{background:#7c3aed;color:#fff;border-color:#7c3aed}
+.cnt{color:#fbbf24;font-weight:700;font-size:.9rem}
+.card-box{perspective:1000px;margin:14px 0}
+.card{position:relative;width:100%;min-height:300px;cursor:pointer;transform-style:preserve-3d;transition:transform .5s;border-radius:18px}
+.card.flip{transform:rotateY(180deg)}
+.card-f,.card-b{position:absolute;width:100%;min-height:300px;backface-visibility:hidden;border-radius:18px;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.card-f{background:linear-gradient(135deg,#7c3aed,#6366f1);border:3px solid #a78bfa}
+.card-b{background:#1a1a2e;border:3px solid #ec4899;transform:rotateY(180deg);align-items:stretch;justify-content:flex-start;overflow-y:auto;max-height:420px}
+.card-f .big{font-size:3.2rem;font-weight:900;color:#fff}
+.card-f .sub{margin-top:10px;color:rgba(255,255,255,.5);font-size:.8rem}
+.row{margin-bottom:8px;padding-bottom:7px;border-bottom:1px solid #2a2a4e}
+.row .lbl{font-size:.68rem;color:#ec4899;text-transform:uppercase;font-weight:700;letter-spacing:.5px}
+.row .val{font-size:.9rem;color:#eee;line-height:1.5;margin-top:2px}
+.row .val.lg{font-size:1.7rem;color:#fbbf24;font-weight:800}
+.tip{display:block;margin-top:4px;padding:5px 8px;background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;border-radius:3px;font-size:.78rem;color:#fbbf24}
+.acts{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.acts button{padding:10px 16px;border:none;border-radius:10px;cursor:pointer;font-weight:700;font-size:.85rem;transition:.2s}
+.b-no{background:#ef4444;color:#fff}
+.b-no:hover{transform:scale(1.06)}
+.b-yes{background:#10b981;color:#fff}
+.b-yes:hover{transform:scale(1.06)}
+.b-arr{background:#2d2d5e;color:#aaa}
+
+/* Test */
+.t-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px}
+.t-types{display:flex;gap:4px;flex-wrap:wrap}
+.t-types button{padding:4px 10px;background:transparent;border:1px solid #444;color:#888;border-radius:12px;cursor:pointer;font-size:.72rem}
+.t-types button.on{background:#fbbf24;color:#000;border-color:#fbbf24;font-weight:700}
+.t-score{color:#10b981;font-weight:700}
+.t-box{background:#1a1a2e;border-radius:14px;padding:18px;border:2px solid #2d2d5e}
+.t-q{font-size:1.5rem;text-align:center;color:#fff;margin-bottom:16px;font-weight:800;min-height:44px}
+.t-opts{display:flex;flex-direction:column;gap:7px}
+.t-o{padding:12px;background:#0f0f23;border:2px solid #2d2d5e;border-radius:10px;cursor:pointer;color:#ddd;font-size:.88rem;transition:.2s}
+.t-o:hover{border-color:#7c3aed}
+.t-o.ok{border-color:#10b981;background:rgba(16,185,129,.1);color:#10b981}
+.t-o.no{border-color:#ef4444;background:rgba(239,68,68,.08);color:#ef4444}
+.t-fb{margin-top:12px;padding:10px;border-radius:8px;font-size:.82rem;display:none;line-height:1.5}
+.t-fb.show{display:block}
+.t-fb.fok{background:rgba(16,185,129,.08);border:1px solid #10b981;color:#6ee7b7}
+.t-fb.fno{background:rgba(239,68,68,.06);border:1px solid #ef4444;color:#fca5a5}
+.t-next{display:none;margin:12px auto 0;padding:9px 20px;background:#7c3aed;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:.85rem}
+.t-next.show{display:block}
+
+/* Stats */
+.s-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px}
+.s-c{background:#1a1a2e;border-radius:12px;padding:14px;text-align:center;border:1px solid #2d2d5e}
+.s-c .n{font-size:2rem;font-weight:900}
+.s-c .l{font-size:.68rem;color:#888;margin-top:2px}
+.s-c.sk .n{color:#10b981}.s-c.su .n{color:#ef4444}.s-c.st .n{color:#fbbf24}
+.s-list{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.s-i{background:#1a1a2e;border-radius:8px;padding:10px;border:1px solid #2d2d5e}
+.s-h{display:flex;justify-content:space-between;margin-bottom:5px;font-size:.82rem}
+.s-h .p{color:#10b981;font-weight:700}
+.pb{height:5px;background:#2d2d5e;border-radius:3px;overflow:hidden}
+.pb div{height:100%;background:linear-gradient(90deg,#10b981,#6ee7b7);border-radius:3px;transition:width .4s}
+.s-btns{display:flex;gap:8px}
+.s-btns button{padding:8px 12px;background:transparent;border:1px solid #ef4444;color:#ef4444;border-radius:6px;cursor:pointer;font-size:.75rem}
+.s-btns button:last-child{border-color:#fbbf24;color:#fbbf24}
+</style>
+</head>
+<body>
+<header>
+<h1>JLPT N2 2023</h1>
+<div class="tabs">
+<button class="tab on" data-e="july">7月</button>
+<button class="tab" data-e="dec">12月</button>
+</div>
+</header>
+<nav id="nav">
+<button class="on" data-s="moji">文字語彙</button>
+<button data-s="bunpo">文法</button>
+<button data-s="dokkai">読解</button>
+<button data-s="dv">読解語彙</button>
+</nav>
+<div class="modes">
+<button class="on" data-m="fc">📖 Flashcard</button>
+<button data-m="test">✍️ Test</button>
+<button data-m="st">📊 Natija</button>
+</div>
+<main>
+<div class="view on" id="v-fc">
+<div class="fc-bar"><div class="filters"><button class="on" data-f="all">Hammasi</button><button data-f="unknown">❌</button><button data-f="known">✅</button></div><span class="cnt" id="cnt">0/0</span></div>
+<div class="card-box"><div class="card" id="card"><div class="card-f" id="cf"></div><div class="card-b" id="cb"></div></div></div>
+<div class="acts"><button class="b-no" id="bno">❌ Bilmadim</button><button class="b-arr" id="bp">◀</button><button class="b-arr" id="bn">▶</button><button class="b-yes" id="byes">✅ Bildim</button></div>
+</div>
+<div class="view" id="v-test">
+<div class="t-bar"><div class="t-types"><button class="on" data-t="meaning">Ma'no</button><button data-t="reading">O'qilishi</button><button data-t="kanji">Kanji</button><button data-t="usage">Misol</button></div><span class="t-score" id="tscore">0/0</span></div>
+<div class="t-box"><div class="t-q" id="tq"></div><div class="t-opts" id="topts"></div><div class="t-fb" id="tfb"></div><button class="t-next" id="tnext">Keyingi →</button></div>
+</div>
+<div class="view" id="v-st">
+<div class="s-grid" id="sgrid"></div>
+<div class="s-list" id="slist"></div>
+<div class="s-btns"><button id="brs">Bu bo'limni tozalash</button><button id="bra">Hammasini tozalash</button></div>
+</div>
+</main>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
